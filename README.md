@@ -2,7 +2,7 @@
 
 Proyecto del Segundo Parcial — Desarrollo y Diseño Web — Universidad Mariano Gálvez de Guatemala.
 
-**Sitio publicado:** _pendiente de desplegar — se actualizará este enlace después del `vercel --prod`._
+**Sitio publicado:** https://copart-subastas-segundo-parcial.vercel.app
 
 ## Usuarios de prueba
 
@@ -82,7 +82,7 @@ El frontend en desarrollo apunta a `http://localhost:4000` mediante `client/.env
    ```bash
    vercel --prod
    ```
-7. Copia la URL que entrega Vercel y actualiza el enlace al inicio de este README.
+7. La URL de producción es https://copart-subastas-segundo-parcial.vercel.app
 
 ## Reglas de negocio implementadas
 

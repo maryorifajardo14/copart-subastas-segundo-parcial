@@ -44,35 +44,37 @@ export default function MyListings() {
       {error && <p className="mensaje mensaje--error">{error}</p>}
       {vehiculos.length === 0 && <p className="mensaje">Aún no tienes publicaciones.</p>}
 
-      <table className="tabla-publicaciones">
-        <thead>
-          <tr>
-            <th></th><th>Vehículo</th><th>Daño</th><th>Estado</th><th>Precio base</th><th>Puja actual</th><th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {vehiculos.map((v) => (
-            <tr key={v.vehiculo_id}>
-              <td><img src={v.foto_portada} alt="" className="tabla-publicaciones__miniatura" /></td>
-              <td><Link to={`/subastas/${v.subasta_id}`}>{v.marca} {v.modelo} ({v.anio})</Link></td>
-              <td><DamageBadge nivel={v.nivel_dano} /></td>
-              <td>{TEXTO_ESTADO[v.estado]}</td>
-              <td>Q {Number(v.precio_base).toLocaleString('es-GT')}</td>
-              <td>Q {Number(v.precio_actual).toLocaleString('es-GT')}</td>
-              <td className="tabla-publicaciones__acciones">
-                {v.estado === 'pendiente' ? (
-                  <>
-                    <Link className="btn btn--ghost btn--pequeno" to={`/editar/${v.vehiculo_id}`}>Editar</Link>
-                    <button className="btn btn--ghost btn--pequeno" onClick={() => onEliminar(v.vehiculo_id)}>Eliminar</button>
-                  </>
-                ) : (
-                  <span className="tabla-publicaciones__nota">No editable</span>
-                )}
-              </td>
+      <div className="tabla-contenedor">
+        <table className="tabla-publicaciones">
+          <thead>
+            <tr>
+              <th></th><th>Vehículo</th><th>Daño</th><th>Estado</th><th>Precio base</th><th>Puja actual</th><th></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {vehiculos.map((v) => (
+              <tr key={v.vehiculo_id}>
+                <td><img src={v.foto_portada} alt="" className="tabla-publicaciones__miniatura" /></td>
+                <td><Link to={`/subastas/${v.subasta_id}`}>{v.marca} {v.modelo} ({v.anio})</Link></td>
+                <td><DamageBadge nivel={v.nivel_dano} /></td>
+                <td>{TEXTO_ESTADO[v.estado]}</td>
+                <td>Q {Number(v.precio_base).toLocaleString('es-GT')}</td>
+                <td>Q {Number(v.precio_actual).toLocaleString('es-GT')}</td>
+                <td className="tabla-publicaciones__acciones">
+                  {v.estado === 'pendiente' ? (
+                    <>
+                      <Link className="btn btn--ghost btn--pequeno" to={`/editar/${v.vehiculo_id}`}>Editar</Link>
+                      <button className="btn btn--ghost btn--pequeno" onClick={() => onEliminar(v.vehiculo_id)}>Eliminar</button>
+                    </>
+                  ) : (
+                    <span className="tabla-publicaciones__nota">No editable</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
