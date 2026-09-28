@@ -1,6 +1,7 @@
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const { Pool } = require('pg');
+const { FOTOS_VEHICULOS } = require('./fotos-vehiculos');
 
 const USUARIOS_PRUEBA = [
   { nombre: 'Ana', apellido: 'Martínez', correo: 'ana.postora@copart.test', telefono: '5011-1111', password: 'Postor123!' },
@@ -8,8 +9,8 @@ const USUARIOS_PRUEBA = [
   { nombre: 'Carla', apellido: 'Reyes', correo: 'carla.postora@copart.test', telefono: '5033-3333', password: 'Postor123!' },
 ];
 
-function fotos(seed) {
-  return Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/${seed}-${i}/900/600`);
+function fotos(clave) {
+  return FOTOS_VEHICULOS[clave];
 }
 
 const AHORA = Date.now();
